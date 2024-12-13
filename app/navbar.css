@@ -1,0 +1,83 @@
+#navbar {
+    position: fixed;
+    width: 24rem;
+    height: 20rem;
+    top: -10rem;
+    left: calc(50vw - 12rem);
+    font-family: 'Title';
+    z-index:99;
+}
+
+#navbar-center-logo {
+    background-color: var(--accent);
+    width: 20rem;
+    height: 16rem;
+    border-radius: 50%;
+    position: absolute;
+    top: 2rem;
+    left: 2rem;
+    z-index: 999;
+}
+
+#logo {
+    font-family: 'Title';
+    color: white;
+    position: fixed;
+    width: 14rem;
+    left: calc(50vw - 7rem);
+    top: 2rem;
+}
+
+#navbar-center {
+    background-color: white;
+    border: 2px var(--accent) solid;
+    width: 24rem;
+    height: 20rem;
+    border-radius: 50%;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    position: relative;
+    z-index: 990;
+}
+
+.navbar-user {
+    position: absolute;
+    width: 12rem;
+    height: 12rem;
+    top: -4rem;
+    left: 6rem;
+    border-radius: 50%;
+    border: var(--accent) solid 2px;
+    transition: all .5s ease-in;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    color: white;
+    font-size: 2em;
+    font-weight: 700;
+    background-image: url('https://peachtart2.s3.amazonaws.com/tart/9dbc506f-e547-4635-8084-4ecf4c5a9505.webp');
+    background-size: cover;
+    background-position: center;
+}
+
+#hover-user1:hover #navbar-user1 {
+    top: 11rem;
+    left: -10rem;
+    opacity: 1;
+    transition: all .5s ease-out;
+}
+
+#hover-user2:hover #navbar-user2 {
+    top: 17rem;
+    left: 6rem;
+    opacity: 1;
+    transition: all .5s ease-out;
+}
+
+#hover-user3:hover #navbar-user3 {
+    top: 11rem;
+    left: 18rem;
+    opacity: 1;
+    transition: all .5s ease-out;
+}

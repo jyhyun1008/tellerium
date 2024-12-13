@@ -1,0 +1,18 @@
+#aboutbar {
+    width: calc(100vw - 2em);
+    display: flex;
+    justify-content: space-between;
+    padding: 1em;
+    border-bottom: 1px var(--accentransy) solid;
+    margin: 0 1em;
+    font-weight: 700;
+    color: var(--accent);
+    position: fixed;
+    z-index: 90;
+    background-color: var(--backgroundtransy);
+}
+
+#aboutbar > div {
+    display: flex;
+    gap: 3em;
+}
