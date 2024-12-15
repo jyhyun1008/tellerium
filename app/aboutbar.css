@@ -1,10 +1,9 @@
 #aboutbar {
-    width: calc(100vw - 2em);
+    width: 100vw;
     display: flex;
     justify-content: space-between;
-    padding: 1em;
+    padding: 1em 2em;
     border-bottom: 1px var(--accentransy) solid;
-    margin: 0 1em;
     font-weight: 700;
     color: var(--accent);
     position: fixed;
