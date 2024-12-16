@@ -12,6 +12,7 @@
     "@neondatabase/serverless": "^0.10.4",
     "dotenv": "^16.4.7",
     "drizzle-orm": "^0.38.2",
+    "marked": "^15.0.4",
     "next": "15.1.0",
     "react": "^19.0.0",
     "react-dom": "^19.0.0"

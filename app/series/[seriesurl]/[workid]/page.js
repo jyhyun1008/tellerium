@@ -1,24 +1,27 @@
 import Image from "next/image";
 import styles from "./page.module.css";
+import { marked } from "marked";
 
 export default async function Page({
     params,
   }) {
 
-    const url = (await params).seriesurl
+    const seriesUrl = (await params).seriesurl
+    const workId = (await params).workid
+    const url = `${seriesUrl}/${workId}`
     let seriesInfos = await fetch(`${process.env.DOMAIN}/api/series-search-by-url`, {
         method: 'POST',
         headers: {
             'content-type': 'application/json',
         },
         body: JSON.stringify({
-                url: url,
+                url: seriesUrl,
             })
     })
     let seriesInfoJSON = await seriesInfos.json()
     let seriesInfo = seriesInfoJSON.rows[0]
 
-    let worksInfos = await fetch(`${process.env.DOMAIN}/api/works-search-by-seriesurl`, {
+    let worksInfos = await fetch(`${process.env.DOMAIN}/api/works-search-by-url`, {
         method: 'POST',
         headers: {
             'content-type': 'application/json',
@@ -28,10 +31,7 @@ export default async function Page({
             })
     })
     let worksInfoJSON = await worksInfos.json()
-    console.log(worksInfoJSON)
-    let worksInfo = worksInfoJSON.rows
-
-    console.log(seriesInfo)
+    let worksInfo = worksInfoJSON.rows[0]
     return (
         <>
         <div style={{ backgroundImage: `url('${seriesInfo.bannerurl}')`, backgroundSize: 'cover', backgroundPosition: 'center', position: 'fixed', width: '100vw', height: '100vh', top: 0, left: 0, opacity: '80%'}}>
@@ -52,26 +52,16 @@ export default async function Page({
                 </center>
             </div>
         </main>
+        <a href={`/series/${seriesUrl}`}>
+            <main className={styles.main} style={{ background: 'var(--accent)', color: 'white', textAlign: 'center',  border: '0'}}>
+                목록보기
+            </main>
+        </a>
         <main className={styles.main}>
             <div className={styles.content}>
-                <h1>회차</h1>
-                {
-                    worksInfo.map((works, i) => {
-                        return (
-                        <a href={`/series/${url}/${works.url}`}>
-                            <div style={{ borderRadius: '5px', border: '2px solid var(--accent)'}}>
-                                <div style={{display: 'flex', background: 'var(--backgroundtransy)', padding: '10px', gap: '1rem', alignItems: 'center' }}>
-                                    <img src={works.thumburl} style={{ height: '100px', width: '150px', objectFit: 'cover', objectPosition: 'center', borderRadius: '5px' }}></img>
-                                    <div style={{ maxHeight: '100px', overflowY: 'hidden' }}>
-                                        <h2>{works.title}</h2>
-                                        <p>{works.content}</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </a>
-                        )
-                    })
-                }
+                <h1>{worksInfo.title}</h1>
+                <div dangerouslySetInnerHTML={{ __html: marked(worksInfo.content)}}>
+                </div>
             </div>
         </main>
         </div>

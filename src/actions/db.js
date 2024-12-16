@@ -9,6 +9,11 @@ export const getUsers = async () => {
     return data;
 };
 
+export const getUsersById = async (id) => {
+    const data = await db.select().from(users).where(eq(users.pid, id));
+    return data;
+};
+
 export const getUsersByUsername = async (username) => {
     const data = await db.select().from(users).where(eq(users.username, username));
     return data;
@@ -21,6 +26,11 @@ export const getWorks = async () => {
 
 export const getSeries = async () => {
     const data = await db.select().from(series).where(eq(series.public, true));
+    return data;
+};
+
+export const getSeriesById = async (id) => {
+    const data = await db.select().from(series).where(eq(series.pid, id));
     return data;
 };
 
@@ -38,5 +48,13 @@ export const getSeriesByUsername = async (username) => {
 export const getWorksBySeriesUrl = async (url) => {
     const seriesresult = await db.select().from(series).where(eq(series.url, url));
     const data = await db.select().from(works).where(eq(works.series, seriesresult[0].pid))
+    return data;
+};
+
+export const getWorksByUrl = async (url) => {
+    const seriesurl = url.split('/')[0]
+    const workid = url.split('/')[1]
+    const seriesresult = await db.select().from(series).where(eq(series.url, seriesurl));
+    const data = await db.select().from(works).where(and(eq(works.series, seriesresult[0].pid),eq(works.url, workid)))
     return data;
 };
