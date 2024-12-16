@@ -46,7 +46,7 @@ export default async function Page({
                 <center>
                     <h1>{seriesInfo.title}</h1>
                     <div>
-                        <p className="username">/series/{seriesInfo.url} by <a href={`/p/${seriesInfo.owner.username}`}>@{seriesInfo.owner.username}</a></p>
+                        <p className="username">/series/{seriesInfo.url} by <a href={`/p/${seriesInfo.owner.username}`}>@{seriesInfo.owner.knownname}</a></p>
                         <p>{seriesInfo.content}</p>
                     </div>
                 </center>

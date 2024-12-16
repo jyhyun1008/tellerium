@@ -22,7 +22,7 @@ export default async function Home() {
                           <img src={works.thumburl} style={{ height: '100px', width: '150px', objectFit: 'cover', objectPosition: 'center', borderRadius: '5px' }}></img>
                           <div style={{ maxHeight: '100px', overflowY: 'hidden' }}>
                               <h2>{works.title}</h2>
-                              <p className="username">@{works.series.owner.username}</p>
+                              <p className="username">@{works.series.owner.knownname}</p>
                           </div>
                       </div>
                   </div>
@@ -42,7 +42,7 @@ export default async function Home() {
                         <img src={series.coverurl} style={{ height: '200px', width: '150px', objectFit: 'cover', objectPosition: 'center', borderRadius: '5px' }}></img>
                         <div style={{ maxHeight: '200px', overflowY: 'hidden' }}>
                             <h2>{series.title}</h2>
-                            <p className="username">@{series.owner.username}</p>
+                            <p className="username">@{series.owner.knownname}</p>
                             <p>{series.content}</p>
                         </div>
                     </div>
